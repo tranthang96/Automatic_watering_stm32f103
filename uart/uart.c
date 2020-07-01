@@ -2,6 +2,10 @@
 
 void init_uart(void)
 {
+    //clock for GPIO port A:
+    rcc_periph_clock_enable(RCC_GPIOA);
+    rcc_periph_clock_enable(RCC_USART1);
+
     /* ==================================
     //STM32F103C8T6 
         RX = PA9

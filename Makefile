@@ -1,7 +1,11 @@
 PROJECT = uart-test
 
 #################### MODULE library #####################
-MODULES = uart 
+MODULES = uart \
+		rtos \
+		rtos/include \
+		rtos/portable/ARM_CM3 \
+		rtos/portable/MemMang
 
 ##########################################################
 ################### Genlink - config #####################
@@ -38,8 +42,8 @@ DEVICES_DATA = $(OPENCM3_DIR)/ld/devices.data
 
 genlink_family		:=$(shell $(OPENCM3_DIR)/scripts/genlink.py $(DEVICES_DATA) $(DEVICE) FAMILY)
 genlink_subfamily	:=$(shell $(OPENCM3_DIR)/scripts/genlink.py $(DEVICES_DATA) $(DEVICE) SUBFAMILY)
-genlink_cpu		:=$(shell $(OPENCM3_DIR)/scripts/genlink.py $(DEVICES_DATA) $(DEVICE) CPU)
-genlink_fpu		:=$(shell $(OPENCM3_DIR)/scripts/genlink.py $(DEVICES_DATA) $(DEVICE) FPU)
+genlink_cpu			:=$(shell $(OPENCM3_DIR)/scripts/genlink.py $(DEVICES_DATA) $(DEVICE) CPU)
+genlink_fpu			:=$(shell $(OPENCM3_DIR)/scripts/genlink.py $(DEVICES_DATA) $(DEVICE) FPU)
 genlink_cppflags	:=$(shell $(OPENCM3_DIR)/scripts/genlink.py $(DEVICES_DATA) $(DEVICE) CPPFLAGS)
 
 CPPFLAGS	+= $(genlink_cppflags)

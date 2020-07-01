@@ -3,14 +3,6 @@
 static void init_clock(void)
 {
     rcc_clock_setup_in_hse_8mhz_out_72mhz();
-
-    //clock for GPIO port A:
-    rcc_periph_clock_enable(RCC_GPIOA);
-    rcc_periph_clock_enable(RCC_USART1);
-    
-    //clock for GPIO port B:
-    rcc_periph_clock_enable(RCC_GPIOB);
-    rcc_periph_clock_enable(RCC_I2C1);
 }
 
 static void gpio_init(void)
